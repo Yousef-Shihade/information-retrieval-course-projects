@@ -1,4 +1,6 @@
-Task 8 – URL Component Analysis and Robots.txt Permission Evaluation
+#Task 8 – URL Component Analysis and Robots.txt Permission Evaluation
+
+
 Objective This task explores the fundamental components of web architecture and crawling ethics in Information Retrieval. The goal is to build a robust parser that decomposes complex URLs and interprets the robots.txt protocol to determine data harvesting constraints.
 
 Dataset The analysis was performed on a set of live, diverse URLs representing different organizational structures:
