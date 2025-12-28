@@ -1,63 +1,95 @@
-#Task 8 – URL Component Analysis and Robots.txt Permission Evaluation
+Task 8 – URL Component Analysis and Robots.txt Permission Evaluation
+Objective
 
+This task explores the fundamental components of web architecture and crawling ethics in Information Retrieval.
+The goal is to analyze complex URLs by decomposing them into logical components and to evaluate robots.txt
+policies in order to determine crawler access restrictions.
 
-Objective This task explores the fundamental components of web architecture and crawling ethics in Information Retrieval. The goal is to build a robust parser that decomposes complex URLs and interprets the robots.txt protocol to determine data harvesting constraints.
+Dataset
 
-Dataset The analysis was performed on a set of live, diverse URLs representing different organizational structures:
+The analysis was performed on a set of live and diverse URLs, representing different organizational structures:
 
-Media: CNN (Global news platform)
+Media: CNN (global news platform)
 
-Museum/Research: Natural History Museum (UK-based academic/public site)
+Museum / Research: Natural History Museum (UK-based academic and public institution)
 
 Academic: University of Haifa (Israeli academic subdomain)
 
-URL Component Extraction The system identifies and extracts the following seven logical components from any given input URL:
+Each URL reflects real-world complexity, including subdomains, paths, parameters, and access rules.
 
-TLD: Top-Level Domain (with support for multi-part suffixes like .ac.uk and .ac.il)
+URL Component Extraction
+
+For every input URL, the system extracts seven logical components:
+
+TLD: Top-Level Domain
+
+Supports multi-part suffixes such as .ac.uk and .ac.il
 
 Domain: The registered organizational name
 
-Subdomain: Secondary domains preceding the main name
+Subdomain: Any secondary domains preceding the main domain
 
-Path: The hierarchical directory structure
+Path: Hierarchical directory structure
 
-File Name: The specific resource or document being accessed
+File Name: The specific resource being accessed
 
-Query Parameters: Key-value pairs used for dynamic content filtering
+Query Parameters: Key–value pairs for dynamic content filtering
 
-Port: Explicit or scheme-default communication ports
+Port: Explicit ports or scheme-default ports
 
-Robots.txt Analysis The system performs a live fetch of the robots.txt file from the host server. It simulates a standard web crawler using custom headers to avoid HTTP 403 (Forbidden) errors. The following data is parsed:
+Robots.txt Analysis
 
-Disallowed URLs: All relative paths under the Disallow directive are extracted and concatenated with the host URL to create absolute links.
+For each host, the system performs a live fetch of the robots.txt file and simulates a standard web crawler.
+Custom HTTP headers are used to avoid 403 Forbidden responses.
 
-User-agent Restrictions: Specific bots and crawlers that are explicitly mentioned in the exclusion list.
+The following directives are parsed:
 
-Crawl-delay: Detection of server-requested wait times between requests to manage server load.
+Disallowed URLs
+
+All paths under Disallow are extracted
+
+Relative paths are converted into absolute URLs
+
+User-agent Restrictions
+
+Identification of specific crawlers or bots explicitly mentioned
+
+Crawl-delay
+
+Detection of server-requested delays between crawl requests
 
 Implementation Details
 
-TLD Logic: Implemented a conditional check for Second-Level Domains (SLDs) to prevent misclassifying .ac or .co as the primary domain.
+TLD Logic
 
-Standardization: Utilized urllib.parse for industry-standard URI decomposition.
+Conditional handling of Second-Level Domains (SLDs) to avoid misclassification
+(e.g., preventing .ac or .co from being treated as primary domains)
 
-Normalization: Applied case-insensitive matching for robots.txt directives to ensure compatibility with varied server configurations.
+Standardization
+
+URL parsing implemented using urllib.parse
+
+Normalization
+
+Case-insensitive matching for robots.txt directives to ensure robustness across servers
 
 Observations
 
-Major media outlets like CNN have extensive lists of disallowed bots, specifically targeting AI training crawlers.
+Major media websites (e.g., CNN) maintain extensive bot exclusion lists, often targeting AI training crawlers.
 
-Academic and research institutions often implement a Crawl-delay (e.g., 8 seconds) to protect server resources.
+Academic and research institutions frequently define a crawl-delay (e.g., 8 seconds) to protect server resources.
 
-The system successfully reconstructs full access-restricted paths, which is critical for the "Frontier" management of a search engine crawler.
+The system successfully reconstructs full restricted URLs, a critical capability for crawler frontier management in search engines.
 
 Technologies Used
 
 Python
 
-urllib (Parse and Request modules)
+urllib (parse and request modules)
 
-pandas (For structured tabular analysis)
+pandas
 
-Author Yousef Shihade 
+Author
+
+Yousef Shihade
 Information Retrieval Course
