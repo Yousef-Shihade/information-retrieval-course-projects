@@ -1,5 +1,4 @@
 # Task 8 - Yousef Shihade 
-# ID 324847623
 
 import urllib.parse
 import urllib.request
