@@ -57,4 +57,5 @@ urllib (Parse and Request modules)
 
 pandas (For structured tabular analysis)
 
-Author Yousef Shihade Information Retrieval Course
+Author Yousef Shihade 
+Information Retrieval Course
